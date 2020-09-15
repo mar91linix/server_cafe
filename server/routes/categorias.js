@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const _ = require('underscore');
-
+const { verificaToken, verificaAdminRole } = require ('../milddlewares/autentication');
 const Categorias = require('../models/user');
 const app = express();
 

@@ -4,7 +4,7 @@ const _ = require('underscore');
 
 const Productos = require('../models/productos');
 
-
+const { verificaToken, verificaAdminRole } = require ('../milddlewares/autentication');
 
 const app = express();
 

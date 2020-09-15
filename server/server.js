@@ -8,6 +8,8 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+
+
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify',false);
 
@@ -25,7 +27,7 @@ app.use ( require('./routes/login'));
 
 
 
-mongoose.connect('mongodb://localhost:27017/cafe',{useNewUrlParser:true,useUnifiedTopology:true} , (err,res)=>{
+mongoose.connect('mongodb+srv://admin:admin>@cafedb.ffcia.mongodb.net/test',{useNewUrlParser:true,useUnifiedTopology:true} , (err,res)=>{
   if (err) throw err;
   console.log('DB ONLINE');
 });

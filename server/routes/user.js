@@ -38,16 +38,16 @@ app.get('/usuarios',[verificaToken,verificaAdminRole], function (req, res) {
 
             });
           }
-        });
+       
 
         res.json({
            ok: true,
            usuarios: usersDB,
-          total:'conteo',
+          total: conteo
         });
       });
     });
-    
+  });
     // console.log(process.env.PORT);
  
   app.get('/usuarios/:id_user',[verificaToken,verificaAdminRole], function (req, res) {
@@ -73,6 +73,7 @@ app.get('/usuarios',[verificaToken,verificaAdminRole], function (req, res) {
       usuario:userDB
       });
   });
+
 });
   //almaceno/posteola informacion enviada
   app.post('/usuarios/:id',[verificaToken,verificaAdminRole], function (req,res) {
@@ -87,7 +88,7 @@ app.get('/usuarios',[verificaToken,verificaAdminRole], function (req, res) {
       status:body.status,
       google:body.google,
       });
-    usuario.save((err,userDB)=>{
+    usuario.save((err, userDB)=>{
       if (err) {
        return res.status(400).json({
           ok: false,
