@@ -30,6 +30,6 @@ mongoose.connect('mongodb://localhost:27017/cafe',{useNewUrlParser:true,useUnifi
   console.log('DB ONLINE');
 });
 
-app.listen(process.env.PORT=5000,()=>{
-    console.log('servidor corriendon en le puerto: ',5000);
+app.listen(process.env.PORT,()=>{
+    console.log('servidor corriendon en le puerto: ');
 });
