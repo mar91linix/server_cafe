@@ -1,20 +1,16 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 
-// const categori = require('./categori');
-let validProductos={
-    values:['Productos'],
-    message:'{VALUE} producto no existe'
-}
-let Schema =mongoose.Schema;
 
-let productoSchema=new Schema({
+let Schema = mongoose.Schema;
+
+let productoSchema = new Schema({
     name:{
-        type:String,
-        require:[true, 'El nombre del producto es requerido.']
+        type: String,
+        require: [true, 'El nombre del producto es requerido.']
     },
     precio_unitario:{
-        type:Number,
-        require:[true, 'El precio  es requerido.']
+        type: Number,
+        require: [true, 'El precio  es requerido.']
     },
     categorias:{
         type:Schema.Types.ObjectId, 
@@ -37,4 +33,4 @@ let productoSchema=new Schema({
     
 });
 
-module.exports=mongoose.model('productos',productoSchema);
+module.exports = mongoose.model('productos',productoSchema);

@@ -28,7 +28,7 @@ app.use ( require('./routes/login'));
 
 
 // // mongoose.connect('mongodb+srv://admin:admin@cafedb.ffcia.mongodb.net/test',{useNewUrlParser:true,useUnifiedTopology:true} , (err,res)=>{
-  mongoose.connect(process.env.URLDB , {useNewUrlParser:true,useUnifiedTopology:true} , (err,res)=>{
+  mongoose.connect ,(process.env.URLDB , {useNewUrlParser: true, useUnifiedTopology:true}, (err,res) => {
  if (err) throw err;
    console.log('DB ONLINE');
  });

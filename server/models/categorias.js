@@ -1,9 +1,9 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 
 
-let Schema =mongoose.Schema;
+let Schema = mongoose.Schema;
 
-let categoriaSchema=new Schema({
+let categoriaSchema = new Schema({
     name:{
         type:String,
         require:[true, 'El nombre es requerido.']
@@ -22,4 +22,4 @@ let categoriaSchema=new Schema({
     
 });
 
-module.exports=mongoose.model('Categorias',categoriaSchema); 
+module.exports = mongoose.model('Categorias',categoriaSchema); 
