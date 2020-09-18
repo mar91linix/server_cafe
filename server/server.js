@@ -40,5 +40,5 @@ app.use ( require('./routes/login'));
  });
 
 app.listen(process.env.PORT, ()=>{
-    console.log('servidor corriendon en le puerto : ',process.env.PORT);
+    console.log('servidor corriendon en el puerto : ',process.env.PORT);
 });
