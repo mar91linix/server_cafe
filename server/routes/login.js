@@ -1,13 +1,13 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-
 const jwt = require('jsonwebtoken');
+
+const {OAuth2Client} = require('google-auth-library');
+const client = new OAuth2Client(process.env.CLIENTE_ID);
 
 const User = require('../models/user');
 
-
 const app = express();
-
 
 app.post('/login', (req, res) => {
      
@@ -80,7 +80,24 @@ app.post('/login', (req, res) => {
 
 });
 
+async function verify(token) {
+    const ticket = await client.verifyIdToken({
+        idToken: token,
+        audience: process.env.CLIENTE_ID,
+  });
+  const payload = ticket.getPayload();
+  console.log(payload)
 
+}
 
+app.post('/google', (req, res) => {
+    let token = req.body.Idtoken;
 
+    verify(token)
+
+    res.json({
+        token: token
+    });
+
+});
 module.exports = app;
