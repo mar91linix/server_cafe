@@ -37,7 +37,7 @@ process.env.SEED =  process.env.SEED || 'september-charli@-12345';
 let urlDB;
 
 if (process.env.NODE_ENV === 'dev ') {
-    urlDB = 'mongodb:localhost:27017/cafe';
+    urlDB = 'mongodb://localhost:27017/cafe';
 }else{
     urlDB =  process.env.MONGO_URL;
 }
