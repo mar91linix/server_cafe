@@ -11,17 +11,16 @@ const app = express();
 
 app.get('/usuarios',[verificaToken,verificaAdminRole], function (req, res) {
 
- 
-  let desde = req.query.desde || 0;
-  desde = Number(desde);
+    let desde = req.query.desde || 0;
+    desde = Number(desde);
 
-  let lim = req.query.lim|| 5;
-  lim = Number(lim);
+    let lim = req.query.lim|| 5;
+    lim = Number(lim);
 
  User.find ( {status : true}, 'name  email  img  role') 
-     .skip ( desde)
-      .limit (lim)
-      .exec ( (err, usersDB) => {
+     .skip(desde)
+      .limit(lim)
+      .exec( (err, usersDB) => {
         if (err) {
           return res.status(400).json({
             ok: false,
@@ -29,7 +28,7 @@ app.get('/usuarios',[verificaToken,verificaAdminRole], function (req, res) {
           });
         }
 
-        User.countDocuments({ status: true }, (error, conteo ) =>{
+        User.countDocuments({ status: true }, (error, conteo ) => {
           
           if (error) {
             return res.status(400).json({
@@ -45,42 +44,49 @@ app.get('/usuarios',[verificaToken,verificaAdminRole], function (req, res) {
            usuarios: usersDB,
           total: conteo
         });
+
       });
+
     });
+
   });
     // console.log(process.env.PORT);
  
   app.get('/usuarios/:id_user',[verificaToken,verificaAdminRole], function (req, res) {
     let id=req.params.id_user;
 
-    User.findById( id, ( err, userDB) =>{
+    User.findById( id, ( err, userDB) => {
       if (err) {
         return res.status(400).json({
            ok: false,
            message:err
          });
        }
+
        if (!userDB) {
         return res.status(400).json({
            ok: false,
            error: {
-           message:'el ususario'
+           message:'el ususario que iententa consultar no existe'
           }
+
          });
+
        }
   res.json({
       ok: true,
-      usuario:userDB
+      usuario: userDB
       });
   });
 
 });
-  //almaceno/posteola informacion enviada
+  //almaceno/posteo un usuario
   app.post('/usuarios/:id',[verificaToken,verificaAdminRole], function (req,res) {
+    
     let body=req.body;
-    User.fin
-    let usuario=new User({
-      name :body.name,
+    // User.fin
+    let usuario = new User({
+      name : body.name,
       email: body.email,
       password:bcrypt.hashSync(body.password,10),
       role:body.role,
@@ -88,6 +94,7 @@ app.get('/usuarios',[verificaToken,verificaAdminRole], function (req, res) {
       status:body.status,
       google:body.google,
       });
+
     usuario.save((err, userDB)=>{
       if (err) {
        return res.status(400).json({
@@ -98,7 +105,7 @@ app.get('/usuarios',[verificaToken,verificaAdminRole], function (req, res) {
       // userDB.password=null;otra para el codigo no se recomienda
       res.json({
       ok: true,
-      usuario:userDB
+      usuario: userDB
     });
   });
 });
@@ -107,20 +114,21 @@ app.get('/usuarios',[verificaToken,verificaAdminRole], function (req, res) {
   app.put('/usuarios/:id',[verificaToken,verificaAdminRole], function (req, res) {
     let id = req.params.id;
     let body = _.pick(req.body, ['email','rol','name','img' , 'password']);
-    
+    if (body.password){
     body.password = bcrypt.hashSync(body.password, 10 );
-
+  }
     User.findByIdAndUpdate(id, body, {new:true, runValidators: true, context: 'query'}, (err, userDB) => {
    
         if (err) {
          return res.status(400).json({
             ok: false,
-            message:err
+            message: err
           });
         }
+
         res.json({
           ok:true,
-          usuario_actualizado:userDB
+          usuario_actualizado: userDB
         });
     });
   });
@@ -134,7 +142,7 @@ app.get('/usuarios',[verificaToken,verificaAdminRole], function (req, res) {
       status: false
     };
 
-    User.findByIdAndUpdate(id, changeState, {new:true}, (err, userDeleted) => {
+    User.findByIdAndUpdate(id_usuario, changeState, {new: true}, (err, userDeleted) => {
    
       if (err) {
        return res.status(400).json({
