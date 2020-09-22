@@ -114,7 +114,7 @@ app.get('/usuarios',[verificaToken,verificaAdminRole], function (req, res) {
   app.put('/usuarios/:id',[verificaToken,verificaAdminRole], function (req, res) {
     let id = req.params.id;
     let body = _.pick(req.body, ['email','rol','name','img' , 'password']);
-    if (body.password){
+    if (body.password) {
     body.password = bcrypt.hashSync(body.password, 10 );
   }
     User.findByIdAndUpdate(id, body, {new:true, runValidators: true, context: 'query'}, (err, userDB) => {

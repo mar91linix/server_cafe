@@ -12,7 +12,7 @@ process.env.PORT = process.env.PORT || 5000;
 // 60 minutos
 //24 horas
 // 30 dias
-process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30;
+process.env.CADUCIDAD_TOKEN = '12h';
 
 
 
@@ -47,4 +47,4 @@ process.env.URLDB = urlDB;
  * google cleiente iD
  *
  */
-process.env.CLIENTE_ID = process.env.CLIENTE_ID ||' 105669234204-tgarcj56vu415528haccls0n9rctg9gn.apps.googleusercontent.com'
+process.env.CLIENT_ID = process.env.CLIENT_ID ||' 105669234204-tgarcj56vu415528haccls0n9rctg9gn.apps.googleusercontent.com';
