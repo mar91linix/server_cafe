@@ -5,6 +5,7 @@
 process.env.PORT = process.env.PORT || 5000;
 
 
+
 /**************
  * Duracion del token
  ********************/
@@ -20,14 +21,14 @@ process.env.CADUCIDAD_TOKEN = '12h';
 /**************
  *SEDD
  ********************/
-process.env.SEED = process.env.SEED || 'september-charli@-12345';
+process.env.SEED = process.env.SEED || 'september-charglie@-12345';
 
 
 /******
  *Environment
  */
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
+process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
 
 
 

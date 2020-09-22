@@ -1,7 +1,7 @@
 {
-  "name": "res-server",
+  "name": "03-res-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Este es un pequeño servidor REST",
   "main": "index.js",
   "scripts": {
     "start": "node server/server",
