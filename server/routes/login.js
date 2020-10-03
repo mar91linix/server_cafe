@@ -65,7 +65,7 @@ app.post('/login', (req, res) => {
 
         res.json({
             ok: true,
-            usuarios: userDB,
+            user: userDB,
             token
         });
 
@@ -165,7 +165,7 @@ app.post('/google', async (req, res) => {
             });
         }
 
-    } );
+    } )
 
 });
 
